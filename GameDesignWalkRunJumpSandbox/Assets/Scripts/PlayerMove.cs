@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController controller;
     
     public float walkSpeed, fastSpeed;
     private float speed;
 
     private void Start()
     {
-        
+        controller = GetComponent<CharacterController>();
     }
 
     private void Update()

@@ -4,12 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerJump : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController controller;
     private Vector3 velocity;
-    public float gravity = 10f, jumpPower = 10f;
-    private float yVar;
+    public float gravity = 10f, jumpPower = 10f, maxJumpCount = 2f;
+    private float yVar, jumpCount;
+
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     private void Update()
     {
@@ -20,9 +26,15 @@ public class PlayerJump : MonoBehaviour
         
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && jumpCount<maxJumpCount)
         {
+            jumpCount++;
             velocity.y = jumpPower;
+        }
+
+        if (controller.isGrounded)
+        {
+            jumpCount = 1f;
         }
     }
 }
