@@ -37,4 +37,5 @@ public class PlayerJump : MonoBehaviour
             jumpCount = 1f;
         }
     }
+    
 }

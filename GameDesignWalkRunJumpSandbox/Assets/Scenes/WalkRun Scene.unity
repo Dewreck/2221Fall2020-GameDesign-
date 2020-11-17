@@ -1463,6 +1463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 25
   jumpPower: 10
+  maxJumpCount: 2
 --- !u!1 &1849355569
 GameObject:
   m_ObjectHideFlags: 0
